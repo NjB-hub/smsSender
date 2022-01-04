@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-authentification',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AuthentificationComponent {
 
   names: string = "container"
+
 
   constructor() { }
 
@@ -19,6 +21,8 @@ export class AuthentificationComponent {
   // container.classList.remove("right-panel-active");
     this.names = "container"
 }
+
+ 
 }
 
 

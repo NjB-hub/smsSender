@@ -72,8 +72,16 @@ form {
 input {
   background-color: #eee;
   border: none;
-  padding: 12px 15px;
-  margin: 8px 0;
+  padding: 10px 12px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+#country{
+  background-color: #eee;
+  border: none;
+  padding: 10px 12px;
+  margin: 5px 0;
   width: 100%;
 }
 
