@@ -15,6 +15,7 @@ import { EmailpasswdresetsendComponent } from './emailpasswdresetsend/emailpassw
 import { ResetpasswdComponent } from './resetpasswd/resetpasswd.component';
 import { CreatecontactbuttonComponent } from './createcontactbutton/createcontactbutton.component';
 import { CreatecontactComponent } from './createcontact/createcontact.component';
+import { ImportcontactbuttonComponent } from './importcontactbutton/importcontactbutton.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreatecontactComponent } from './createcontact/createcontact.component'
     EmailpasswdresetsendComponent,
     ResetpasswdComponent,
     CreatecontactbuttonComponent,
-    CreatecontactComponent
+    CreatecontactComponent,
+    ImportcontactbuttonComponent
   ],
   imports: [
     BrowserModule,

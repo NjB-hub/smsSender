@@ -1,0 +1,23 @@
+.import-contact-button{
+    left: 48%;
+    bottom: 5%;
+    box-sizing: border-box;
+    position: relative;
+
+    background-color: #e6a00a;
+    border: solid 1px #e6a00a;
+    color: white;
+    border-radius: 50vw;
+
+    box-shadow: 5px 5px 10px #161b1d3b;
+    padding: .8em;
+    z-index: 3;
+
+    cursor: default;
+
+    transition: all .25s ease;
+
+}
+.import-contact-button:active{
+    transform: scale(0.9);
+}

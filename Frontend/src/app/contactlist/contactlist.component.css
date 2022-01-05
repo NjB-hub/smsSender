@@ -76,12 +76,26 @@
   
   .search-form {
     width: 100%;
-    max-width: 1008px;
+    max-width: 800px;
     border: 1px solid #706c72;
     border: 1px solid rgba(112,108,114,0.5);
     border-radius: 20px;
     font-size: 16px;
     font-size: 1.6rem;
+    display: inline;
+  }
+
+  #filter{
+    border-radius: 40px;
+    display: inline;
+    width: 150px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .monfiltre{
+    -webkit-text-fill-color: aliceblue;
+    font-size:40px;
   }
   
   .magnifier {
@@ -105,7 +119,7 @@
   
   .search-form input {
     display: inline-block;
-    width: 208px;
+    width: 608px;
     padding: 2px 5px 2px 0;
     color: #706c72;
     background: none;
@@ -288,7 +302,13 @@
   
 
   
-  
+  .mesbouttons{
+    padding: 10px;
+    margin-right: 200px;
+  }
+.createcontactbutton{
+  padding: 10px;
+}
   
   /*------------------------------------*\
       Contacts List - Custom Scrollbar
