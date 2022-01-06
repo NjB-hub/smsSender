@@ -13,7 +13,7 @@
               <label for="search">Search</label>
               <input id="search" name="search" type="text" placeholder="Search" />
             </form><!-- /.search-form -->
-           
+          </div><!-- /.search-form-container -->
             <select id="filter" name="Filter" class="form-control">
               <option value="">--Contact Filter--</option>
               <option value="Tous">All Contacts</option>
@@ -22,8 +22,7 @@
               <option value="Nexttel">Nexttel</option>
               <option value="Camtel">Camtel</option>
           </select>
-          </div><!-- /.search-form-container -->
-          
+
           <div class="contacts">
     
             <ul class="contact-list">
@@ -49,7 +48,6 @@
               <li class="person">
                 <span class="avatar">
                   <img src="http://vzkiss.com/demo/chatbox/images/avatar/avatar_3.jpg" alt="Sacha Griffin" />
-                  <span class="status away"></span>
                 </span>
                 <span class="info">
                   <span class="name">Sarah momo</span>
@@ -58,46 +56,17 @@
     
               <!-- 3rd -->
     
-              <li class="person">
+              <li class="person" *ngFor="let contact of contacts"> 
                 <span class="avatar">
-                  <img src="http://vzkiss.com/demo/chatbox/images/avatar/avatar_4.jpeg" alt="Johhny McGrump" />
-                  <span class="status busy"></span>
+                  <img src="../../assets/img/blank-profile.webp" alt="{{contact.firstName}}" />
                 </span>
                 <span class="info">
-                  <span class="name">Johhny </span>
+                  <span class="name">{{contact.firstName}}</span>
                 </span>
               </li>
-    
-              <li class="person">
-                <span class="avatar">
-                  <img src="http://vzkiss.com/demo/chatbox/images/avatar/avatar_5.jpg" alt="Tommy Tom" /><span class="status"></span>
-                </span>
-                <span class="info">
-                  <span class="name">Tommy Tom</span>
-                </span>
-              </li>
-    
-              <li class="person">
-                <span class="avatar">
-                  <img src="http://vzkiss.com/demo/chatbox/images/avatar/avatar_6.jpg" alt="James King" /><span class="status"></span>
-                </span>
-                <span class="info">
-                  <span class="name">James </span>
-                </span>
-              </li>
-              
-              <li class="person">
-                <span class="avatar">
-                  <img src="http://vzkiss.com/demo/chatbox/images/avatar/avatar_7.jpg" alt="Natsumi Miyu" /><span class="status online"></span>
-                </span>
-                <span class="info">
-                  <span class="name"> Miyuki </span>
-                </span>
-              </li><br>
-              <div class="mesbouttons">
-                <app-createcontactbutton class="createcontactbutton"></app-createcontactbutton>
-                <app-importcontactbutton></app-importcontactbutton>
-              </div>>
+
+              <app-createcontactbutton [id]="myParam['userId']" [token]="myParam['token']"></app-createcontactbutton>
+              <app-importcontactbutton></app-importcontactbutton>
             </ul>
           
           </div><!-- /.contacts -->
@@ -108,4 +77,4 @@
       </div><!-- /.content -->
     
     </div><!-- /.wrapper -->
-    </div>
+  </div>

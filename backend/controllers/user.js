@@ -1,12 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
+const nodemailer = require("nodemailer");
 const User = require('../models/user');
 
 
 exports.signup = (req, res, next) => {
-    const userObject = JSON.parse(req.body.user);
-    delete userObject._id;
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
         const user = new User({
@@ -15,7 +14,7 @@ exports.signup = (req, res, next) => {
           phoneNumber: req.body.phoneNumber,
           country: req.body.country,
           password: hash,
-          photo: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
+          photo: ``,
         });
         user.save()
           .then(() => res.status(201).json({ message: 'User created !' }))
@@ -97,4 +96,90 @@ exports.signup = (req, res, next) => {
                 
           
     };
+
+    exports.sendEmailResetPassword = async(req, res, next) => {
+      const phoneNumber = req.body.phoneNumber
+      const email = req.body.email
+      const id = (await User.findOne({phoneNumber})) 
+
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+          user: "enspygi2023@gmail.com", 
+          pass: "promogi_2023", 
+        },
+      });
+
+          // send mail with defined transport object
+
+    var mailInfo = {
+        from: "enspygi2023@gmail.com", // sender address
+        to: email, // list of receivers
+        subject: "Hello dear user. You can reset your password here", // Subject line
+        text: "Did you forgot your password?", // plain text body
+        html: ` <p>Click this link to reset your password: </p> <a href = 'http://localhost:4200/reset-password/${id._id}'>Reset my password</a>`, // html body
+    }
+     
+    transporter.sendMail(mailInfo, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    }); 
     
+    
+  };
+
+ /* exports.resetPassword =  (req, res, next) => {
+    User.findByIdAndUpdate({ _id: req.params.id }, {password: bcrypt.hash(req.body.password, 10)}).then(
+      () => {
+        res.status(201).json({
+          message: 'Password updated successfully!'
+        });
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+
+  };
+
+  exports.resetPassword = async (req, res, next) => {
+    try{
+      await User.findByIdAndUpdate({ _id: req.params.id }, {password: bcrypt.hash(req.body.password, 10)})
+    } catch (error) {
+      console.log(error)
+    }
+  } */
+    
+    
+  exports.resetPassword =  (req, res, next) => {
+    bcrypt.hash(req.body.password, 10)
+      .then(hash => {
+        const user = new User({
+          _id: req.params.id,
+          password: hash,
+          //password: bcrypt.hash(req.body.password, 10),
+        });
+    User.updateOne({ _id: req.params.id }, user).then(
+      () => {
+        res.status(201).json({
+          message: 'Password updated successfully!'
+        });
+      }
+    )}).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+
+  };
+

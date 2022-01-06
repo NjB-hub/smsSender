@@ -1,14 +1,14 @@
 const Contact = require('../models/contact');
 
 exports.createContact = (req, res, next) => {
+    console.log(req.body)
     const contact = new Contact({
-      _id: req.params.id,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
+      firstName: req.body.firstname,
+      lastName: req.body.lastname,
       phoneNumber: req.body.phoneNumber,
       phoneOperator: req.body.phoneOperator,
       user_id: req.body.user_id,
-      creationDate: req.body.creationDate,
+      creationDate: Date.now()
     });
     contact.save().then(
       () => {
@@ -105,4 +105,16 @@ exports.modifyContact =  (req, res, next) => {
           error:error  
         });
   });
+};
+
+exports.getUserContacts =  (req, res, next) => {
+  console.log(req.params)
+  Contact.find({'user_id._id': req.params.id}).then(
+    (contacts) => {res.status(200).json(contacts);}
+  ).catch(
+    (error) => {
+      res.status(400).json({ 
+        error:error  
+      })
+    });
 };

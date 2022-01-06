@@ -1,4 +1,5 @@
 const Message = require('../models/message');
+const axios = require('axios')
 
 exports.createMessage = (req, res, next) => {
     const message = new Message({
@@ -106,3 +107,27 @@ exports.modifyMessage =  (req, res, next) => {
         });
   });
 };
+
+exports.sendSMS = async (req, res) => {
+  console.log(req.body)
+  const message = req.body.message
+  const phoneNo = req.body.phoneNo
+ 
+  const response = await axios.post(
+    "http://proxysms.mufoca.com/api/v0/shortMessages",
+    {
+      phoneNumber: phoneNo,
+      message: message,
+    },
+    {
+      headers: {
+        Authorization:
+          "Basic ZjE2MTg3ZGE3MGI2OmI2OTAxZDQwLWYyMTEtOTMwYS04ZTBjLTFjZGFkN2E2NGY5OQ==",
+        "Content-Type": "application/json",
+      },
+    }
+  )
+ 
+  console.log(response)
+  return response
+}

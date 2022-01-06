@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-forgotpswwd',
@@ -8,19 +12,26 @@ import { Component, OnInit } from '@angular/core';
 export class ForgotpswwdComponent implements OnInit {
   names: string = "container"
 
+  constructor(private httpClient: HttpClient, private router: Router) { }
+  ngOnInit(): void {}
 
-  constructor() { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  forgotp(form :NgForm){
+    let email = form.value['Email']
+    let phoneNumber = form.value['phoneNumber']
 
-  signup() {
-  // container.classList.add("right-panel-active");
-    this.names = this.names + " " + "right-panel-active"
+    this.httpClient.post(environment.serverAdress+'/api/auth/forgot-password',
+     {
+       email: email,
+       phoneNumber: phoneNumber
+     }).subscribe(
+      (response: any) =>{
+        console.log(response)
+      },
+      (error) =>{
+        console.log(error)
+      }
+     )
+     this.router.navigate(['emailpasswdresetsend'])
   }
-  signin() {
-  // container.classList.remove("right-panel-active");
-    this.names = "container"
-}
 
 }

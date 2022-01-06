@@ -7,6 +7,7 @@ const path = require('path');
 //Routeurs
 const userRoutes = require('./routes/userRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 
 //Connection à la base de donnée smsdb
 mongoose.connect('mongodb+srv://nj:nj@clustersms.esptv.mongodb.net/smsdb?retryWrites=true&w=majority',
@@ -33,6 +34,8 @@ app.use('/api/auth',userRoutes);
 //Routes pour les sms
 app.use('/api/message', messageRoutes);
 
+//Routes pour les contacts
+app.use('/api/contact', contactRoutes);
 
 
 module.exports = app;

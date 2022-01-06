@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +14,8 @@ import { ContactlistComponent } from './contactlist/contactlist.component';
 import { ForgotpswwdComponent } from './forgotpswwd/forgotpswwd.component';
 import { EmailpasswdresetsendComponent } from './emailpasswdresetsend/emailpasswdresetsend.component';
 import { ResetpasswdComponent } from './resetpasswd/resetpasswd.component';
-import { CreatecontactbuttonComponent } from './createcontactbutton/createcontactbutton.component';
 import { CreatecontactComponent } from './createcontact/createcontact.component';
+import { CreatecontactbuttonComponent } from './createcontactbutton/createcontactbutton.component';
 import { ImportcontactbuttonComponent } from './importcontactbutton/importcontactbutton.component';
 
 @NgModule({
@@ -28,15 +29,16 @@ import { ImportcontactbuttonComponent } from './importcontactbutton/importcontac
     ForgotpswwdComponent,
     EmailpasswdresetsendComponent,
     ResetpasswdComponent,
-    CreatecontactbuttonComponent,
     CreatecontactComponent,
+    CreatecontactbuttonComponent,
     ImportcontactbuttonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ShowHidePasswordModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

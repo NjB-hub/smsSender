@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createcontactbutton',
@@ -7,16 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatecontactbuttonComponent implements OnInit {
 
-  constructor() { }
-  newContactForm(){
-    document.querySelector<HTMLElement>('.add-contact-wrapper')!.style.visibility="visible";
-    document.querySelector<HTMLElement>('.add-contact-form')!.style.animation="popup .25s ease";
-  }
-  closeContactForm(){
-    document.querySelector<HTMLElement>('.add-contact-wrapper')!.style.visibility="hidden";
-    document.querySelector<HTMLElement>('.add-contact-form')!.style.animation="none";
-  }
+  @Input() id!: string
+  @Input() token!: string
 
+  constructor(private router: Router) { }
+  newContact(){
+    this.router.navigate(['createcontact', this.id, this.token])
+  }
   ngOnInit(): void {
   }
 

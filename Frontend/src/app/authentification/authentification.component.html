@@ -1,23 +1,18 @@
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <div class="summary">
   <div class="{{ names }}" id="container">
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form (ngSubmit)="onSignup(f1)" #f1="ngForm">
         <h1>Create Account</h1>
-        <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-        <input type="text" placeholder="First Name" />
-        <input type="text" placeholder="Last Name" />
-        <input type="tel" placeholder="Phone Number" />
-        <input id="myInput" type="password" placeholder="Password" matInput
-          showHideInput/>
+        
+        <input type="text" placeholder="First Name" name="firstName" ngModel required/>
+        <input type="text" placeholder="Last Name" name="lastName" ngModel required/>
+        <input type="tel" placeholder="Phone Number" name="number" ngModel required />
+        <input type="password" placeholder="Password" name="password" ngModel required />
 
-
-        <span style="display: inline; float: none;">select your country</span>
-        <select id="country" name="country" class="form-control">
+        <span style="display: inline; float: none;">Select your country</span>
+        <select id="country" name="country" class="form-control" ngModel required>
           <option value="Afghanistan">Afghanistan</option>
           <option value="Åland Islands">Åland Islands</option>
           <option value="Albania">Albania</option>
@@ -278,21 +273,18 @@
           <option value="Zambia">Zambia</option>
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
-        <button type="submit">Sign Up</button>
+        <button type="submit" [disabled]="f1.invalid">Sign Up</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="">
+      <form (ngSubmit)="onSignin(f2)" #f2="ngForm">
         <h1>Sign in</h1>
-        <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-        <input type="tel" placeholder="Phone Number" />
-        <input type="password" placeholder="Password" />
-        <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        
+        
+        <input type="tel" name="tel" placeholder="Phone Number" ngModel required/>
+        <input type="password" name="password" placeholder="Password" ngModel required/>
+        <a routerLink="/forgotp">Forgot your password?</a>
+        <button type="submit" [disabled]="f2.invalid">Sign In</button>
       </form>
     </div>
     <div class="overlay-container">
@@ -311,3 +303,4 @@
     </div>
   </div>
 </div>
+

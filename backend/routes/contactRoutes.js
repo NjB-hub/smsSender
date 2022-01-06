@@ -11,6 +11,6 @@ router.post('/',auth, contactCtrl.createContact);
 router.get('/:id',auth, contactCtrl.getOneContact);
 router.put('/:id',auth, contactCtrl.modifyContact);
 router.delete('/:id',auth, contactCtrl.deleteContact);  
-
+router.get('/getcontacts/:id',auth, contactCtrl.getUserContacts);
 
 module.exports = router;

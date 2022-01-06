@@ -52,7 +52,7 @@
     box-shadow: 0 15px 30px 5px rgba(0,0,0,0.4);
 
   }
-
+  
   .sidebar {
     float: left;
     width: 100%;
@@ -138,13 +138,12 @@
     padding: 0 10px 0 25px;
     margin-bottom: 9px;
     list-style-type: 0;
-    font-size: 14px;
     text-transform: uppercase;
   }
   
   .contacts-nav li {
     display: inline;
-    margin-right: 8px;
+    margin-right: 20px;
     height: 24px;
     line-height: 24px;
     cursor: pointer;
@@ -285,6 +284,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: gray;
   }
   
   .person .unread-messages, .person .last-login {
